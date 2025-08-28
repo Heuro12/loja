@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: loja
+    env: python
+    region: frankfurt   # pode trocar para o mais próximo (virginia, oregon, singapore...)
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12

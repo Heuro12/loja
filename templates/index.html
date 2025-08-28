@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Minha Loja</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🛒 Bem-vindo à Minha Loja</h1>
+    </header>
+
+    <main>
+        <div class="produtos">
+            {% if produtos %}
+                {% for produto in produtos %}
+                <div class="card">
+                    <img src="{{ produto['imagem'] }}" alt="{{ produto['nome'] }}">
+                    <h2>{{ produto['nome'] }}</h2>
+                    <p>{{ produto['descricao'] }}</p>
+                    <span class="preco">{{ produto['preco'] }} {{ produto['moeda'] }}</span>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="aviso">Nenhum produto disponível no momento.</p>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>
